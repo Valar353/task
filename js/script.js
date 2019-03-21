@@ -1,5 +1,5 @@
-let min = 7;
-let sec = 55;
+let min = 0;
+let sec = 0;
 let i = 1;
 let timer = false;
 let start = 0;
