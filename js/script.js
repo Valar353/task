@@ -1,4 +1,21 @@
-
+class Cell
+{
+  constructor(i, start, end, time){
+    this.iter = i;
+    this.start = start;
+    this.end = end;
+    this.time = time;
+  }
+  str(){
+    let str = "<tr>";
+    str+="<td class='title'>Интервал "+this.iter+"</td>";
+    str+="<td class='start'>"+this.start+"</td>";
+    str+="<td class='end'>"+this.end+"</td>";
+    str+="<td class='time'>"+ this.time+"</td>";
+    str+="<td class='del'>х</td></tr>";
+    return str;
+  }
+}
 class Timer
 {
   constructor(ct, t, a){
@@ -44,13 +61,8 @@ class Timer
     return retmin+':'+retsec;
   }
   cell(){
-    let str = "<tr>";
-    str+="<td class='title'>Интервал "+this.i+"</td>";
-    str+="<td class='start'>"+this.start+"</td>";
-    str+="<td class='end'>"+this.end+"</td>";
-    str+="<td class='time'>"+ this.printTime()+"</td>";
-    str+="<td class='del'>х</td></tr>";
-    return str;
+    let cell = new Cell(this.i, this.start, this.end, this.printTime());
+    return cell.str();
   }
   retTime(){
     const t = new Date();
