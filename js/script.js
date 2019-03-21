@@ -1,7 +1,7 @@
 
 class Timer
 {
-  constructor(ct, a){
+  constructor(ct, t, a){
     this.min = 0;
     this.sec = 0;
     this.i = 1;
@@ -10,6 +10,7 @@ class Timer
     this.end = 0;
     this.allTime = [0,0];
     this.currentTime = ct;
+    this.table = t;
     this.all = a;
   }
 
@@ -58,6 +59,9 @@ class Timer
     const s = t.getSeconds()>9?t.getSeconds():'0'+t.getSeconds();
     return h+':'+m+':'+s;
   }
+  removeChild(target){
+    this.table.removeChild(target.parentNode);
+  }
   dropping(){
     this.min = 0;
     this.sec = 0;
@@ -84,7 +88,7 @@ const table = document.getElementsByTagName('tbody')[0];
 const all = document.getElementsByClassName('allTime')[0];
 
 
-let objTimer = new Timer(currentTime, all);
+let objTimer = new Timer(currentTime,table, all);
 
 document.getElementById('timeTracking').addEventListener('click', function(e){
   const target = e.target;
@@ -99,8 +103,8 @@ document.getElementById('timeTracking').addEventListener('click', function(e){
     }
   }
   if(target.className == 'del'){
-    table.removeChild(target.parentNode);
-     objTimer.printAllTime();
+    objTimer.removeChild(target);
+    objTimer.printAllTime();
   }
   if(target.className == 'title'){
     const result = prompt('Назовите интервал', 'Интервал '+objTimer.i);
