@@ -26,7 +26,7 @@ class Timer
     clearInterval(this.timer);
     this.timer = false;
     this.end = this.retTime();
-    table.innerHTML += this.cell();
+    this.table.innerHTML += this.cell();
     this.printAllTime();
     this.dropping();
     this.currentTime.innerHTML = this.printTime();
